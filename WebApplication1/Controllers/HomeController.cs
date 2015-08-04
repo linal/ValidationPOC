@@ -13,8 +13,12 @@ namespace ValidationPoc.Controllers
         [HttpPost]
         public ActionResult Index(Questionnaire questionnaire)
         {
-            TryValidateModel(questionnaire);
-            return View(questionnaire);
+            if (!TryValidateModel(questionnaire))
+            {
+                return View(questionnaire);
+            }
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }

@@ -7,11 +7,11 @@
 <div ng-app="QuestionnaireApp" class="container-fluid">
     
     <h2>Questionnaire</h2>
-
     <form name="form" ng-controller="QuestionnaireController"
           action="@Url.Action("Index", "Home")" ng-submit="(submitted=true) && form.$invalid && $event.preventDefault();"
           method="post" novalidate="novalidate" autocomplete="off"
           ng-cloak><!-- ng-cloak prevents elements being displayed before data is loaded -->
+        @Html.ValidationSummary()
         <div class="row">
             <div class="col-md-12 errorColumn">
                 <p>
@@ -25,6 +25,7 @@
                 <input id="Name" name="Name" ng-model="data.Name" type="text" ng-required="true" class="form-control">
                 <div class="error" ng-show="(form.Name.$touched || submitted) && form.Name.$invalid">
                     <div ng-show="form.Name.$error.required">Name is required.</div>
+                    <div ng-show="form.Name.$error.maxlength">Name is longer than 10 characters longer.</div>
                 </div>
             </div>
 

@@ -1,7 +1,8 @@
-﻿@model WebApplication1.Models.OtherGreens?
+﻿@using ValidationPoc.Models
+@model ValidationPoc.Models.OtherGreens?
 @{
 
-    var values = Enum.GetValues(typeof(WebApplication1.Models.OtherGreens)).Cast<object>()
+    var values = Enum.GetValues(typeof(OtherGreens)).Cast<object>()
                      .Select(v => new SelectListItem
                      {
                          Selected = v.Equals(Model),

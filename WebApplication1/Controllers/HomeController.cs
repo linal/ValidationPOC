@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using WebApplication1.Models;
+﻿using System.Web.Mvc;
+using ValidationPoc.Models;
 
-namespace WebApplication1.Controllers
+namespace ValidationPoc.Controllers
 {
     public class HomeController : Controller
     {
@@ -15,10 +11,10 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(Contact contact)
+        public ActionResult Index(Questionnaire questionnaire)
         {
-            TryValidateModel(contact);
-            return View(contact);
+            TryValidateModel(questionnaire);
+            return View(questionnaire);
         }
     }
 }

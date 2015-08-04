@@ -1,10 +1,10 @@
 ﻿using FluentValidation;
 
-namespace WebApplication1.Models.Validators
+namespace ValidationPoc.Models.Validators
 {
-    public class ContactValidator : AbstractValidator<Contact>
+    public class QuestionnaireValidator : AbstractValidator<Questionnaire>
     {
-        public ContactValidator()
+        public QuestionnaireValidator()
         {
             RuleFor(x => x.Name).Length(10).NotEmpty();
             RuleFor(x => x.Velocity).NotEmpty().When(x => x.SeeMoreQuestions);

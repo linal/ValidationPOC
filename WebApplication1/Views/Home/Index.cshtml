@@ -1,15 +1,15 @@
 ﻿@using Newtonsoft.Json
 @model WebApplication1.Models.Contact
 @{
-    ViewBag.Title = "Angular Contact Form";
+    ViewBag.Title = "Angular Validation Form";
 }
 
-<div ng-app="ContactFormApp" class="container-fluid">
+<div ng-app="ValidationFormApp" class="container-fluid">
     
-    <h2>Contact Form</h2>
+    <h2>Validation Form</h2>
 
     <form name="form" ng-controller="FormController"
-          action="/Contact/Angular" ng-submit="(submitted=true) && form.$invalid && $event.preventDefault();"
+          action="@Url.Action("Index", "Home")" ng-submit="(submitted=true) && form.$invalid && $event.preventDefault();"
           method="post" novalidate="novalidate" autocomplete="off">
         <div class="row">
             <div class="col-md-12 errorColumn">

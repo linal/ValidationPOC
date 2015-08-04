@@ -1,10 +1,10 @@
 ﻿(function (angular) {
     'use strict';
 
-    var contactFormApp = angular.module("ContactFormApp", []);
+    var validationFormApp = angular.module("ValidationFormApp", []);
 
-    contactFormApp.controller('FormController', ['$scope', function ($scope) {
-        var jsonText = $("#data").val();
+    validationFormApp.controller('FormController', ['$scope', function ($scope) {
+        var jsonText = angular.element(document.querySelector('#data')).val();
         if (jsonText != undefined && jsonText !== 'undefined') {
             $scope.data = JSON.parse(jsonText);
         }

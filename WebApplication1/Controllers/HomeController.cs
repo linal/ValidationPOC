@@ -7,9 +7,8 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
-    public class ContactController : Controller
+    public class HomeController : Controller
     {
-        // GET: Contact
         public ActionResult Index()
         {
             return View();
@@ -17,18 +16,6 @@ namespace WebApplication1.Controllers
 
         [HttpPost]
         public ActionResult Index(Contact contact)
-        {
-            TryValidateModel(contact);
-            return View(contact);
-        }
-
-        public ActionResult Angular()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Angular(Contact contact)
         {
             TryValidateModel(contact);
             return View(contact);

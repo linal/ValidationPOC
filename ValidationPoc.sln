@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{E9F1E9F1-3DF8-4814-8229-A0FEC20EBA5D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValidationPoc", "WebApplication1\ValidationPoc.csproj", "{E9F1E9F1-3DF8-4814-8229-A0FEC20EBA5D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

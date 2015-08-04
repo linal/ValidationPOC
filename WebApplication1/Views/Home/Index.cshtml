@@ -4,13 +4,14 @@
     ViewBag.Title = "Angular Validation Form";
 }
 
-<div ng-app="ValidationFormApp" class="container-fluid">
+<div ng-app="QuestionnaireApp" class="container-fluid">
     
-    <h2>Validation Form</h2>
+    <h2>Questionnaire</h2>
 
-    <form name="form" ng-controller="FormController"
+    <form name="form" ng-controller="QuestionnaireController"
           action="@Url.Action("Index", "Home")" ng-submit="(submitted=true) && form.$invalid && $event.preventDefault();"
-          method="post" novalidate="novalidate" autocomplete="off">
+          method="post" novalidate="novalidate" autocomplete="off"
+          ng-cloak><!-- ng-cloak prevents elements being displayed before data is loaded -->
         <div class="row">
             <div class="col-md-12 errorColumn">
                 <p>
@@ -31,11 +32,13 @@
             <label for="AnswerMoreQuestions">Do you want to answer more questions?</label>
             <input type="checkbox" id="AnswerMoreQuestions" name="AnswerMoreQuestions" ng-model="data.AnswerMoreQuestions" ng-true-value="true" ng-false-value="false" value="true"/>
         </div>
-        <div class="form-group ng-hide" ng-show="data.AnswerMoreQuestions">
+
+        <div class="form-group" ng-show="data.AnswerMoreQuestions">
             <label for="SeeMoreQuestions">Do you want to see more questions?</label>
             <input id="SeeMoreQuestions" name="SeeMoreQuestions" type="checkbox" value="true" ng-model="data.SeeMoreQuestions"/>
         </div>
-        <div class="form-group ng-hide" ng-show="data.AnswerMoreQuestions && data.SeeMoreQuestions">
+
+        <div class="form-group" ng-show="data.AnswerMoreQuestions && data.SeeMoreQuestions">
             <label for="Velocity">What is the velocity of an unladen swallow?
                 <span class="error" ng-show="data.AnswerMoreQuestions && data.SeeMoreQuestions">*</span>
             </label>
@@ -44,6 +47,7 @@
                 <div ng-show="form.Velocity.$error.required">Velocity is required.</div>
             </div>
         </div>
+
         <div class="form-group">
             <label for="Color">What is your favourite colour?<span class="error">*</span></label>
             <select data-ng-model="data.Color" name="Color" id="Color" ng-required="true" class="form-control">
@@ -57,6 +61,7 @@
                 <div ng-show="form.Color.$error.required">Color is required.</div>
             </div>
         </div>
+
         <div class="form-group" ng-show="data.Color == 'Green'">
             <label for="TypeOfGreen">What type of green is it?<span class="error">*</span></label>
             <select data-ng-model="data.TypeOfGreen" name="TypeOfGreen" id="TypeOfGreen" ng-required="data.Color == 'Green'" class="form-control">
@@ -68,17 +73,19 @@
                 <div ng-show="form.TypeOfGreen.$error.required">Type of green is required.</div>
             </div>
         </div>
+
         <div class="form-group">
             <label for="UltimateQuestion">What is the ultimate question?
                 <span class="error" ng-show="data.TypeOfGreen=='DarkGreen' && data.Velocity > 41">*</span>
             </label>
             <input id="UltimateQuestion" name="UltimateQuestion" ng-model="data.UltimateQuestion" type="text" ng-required="data.TypeOfGreen=='DarkGreen' && data.Velocity > 41" class="form-control"/>
-            <div ng-show="(form.UltimateQuestion.$touched || submitted) && form.UltimateQuestion.$invalid">
+            <div class="error" ng-show="(form.UltimateQuestion.$touched || submitted) && form.UltimateQuestion.$invalid">
                 <div ng-show="form.UltimateQuestion.$error.required">Ultimate Question if required.</div>
             </div>
         </div>
+
         <div>
-            <input class="btn btn-success" type="submit" value="Submit">
+            <input class="btn btn-success" type="submit" value="Save">
         </div>
     </form>
 </div>

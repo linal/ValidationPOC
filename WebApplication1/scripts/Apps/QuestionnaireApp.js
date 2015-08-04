@@ -1,12 +1,14 @@
 ﻿(function (angular) {
     'use strict';
 
-    var validationFormApp = angular.module("ValidationFormApp", []);
+    var questionnaireApp = angular.module("QuestionnaireApp", []);
 
-    validationFormApp.controller('FormController', ['$scope', function ($scope) {
+    questionnaireApp.controller('QuestionnaireController', ['$scope', function ($scope) {
         var jsonText = angular.element(document.querySelector('#data')).val();
         if (jsonText != undefined && jsonText !== 'undefined') {
             $scope.data = JSON.parse(jsonText);
+        } else {
+            $scope.data = {};
         }
 
         $scope.$watch("data.AnswerMoreQuestions", function (val) {

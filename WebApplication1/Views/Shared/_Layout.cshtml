@@ -9,23 +9,17 @@
         .error {
             color: red;
         }
+        [ng-cloak] {display: none !important;}
     </style>
 </head>
 <body>
-<div>
-    @RenderBody()
-</div>
-<!--
-<script type="text/javascript" src="~/scripts/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="~/scripts/jquery.validate.min.js"></script>
-<script type="text/javascript" src="~/scripts/jquery.validate.unobtrusive.min.js"></script>
-<script type="text/javascript" src="~/scripts/jquery.validate.unobtrusive.bootstrap.min.js"></script>
-    -->
+    <div>
+        @RenderBody()
+    </div>
+
     <script src="~/scripts/bootstrap.min.js"></script>
-
     <script type="text/javascript" src="~/scripts/angular.min.js"></script>
-    <script type="text/javascript" src="~/scripts/Apps/ValidationFormApp.js"></script>
-
+    <script type="text/javascript" src="~/scripts/Apps/QuestionnaireApp.js"></script>
 
 </body>
 </html>

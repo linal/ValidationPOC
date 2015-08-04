@@ -1,0 +1,13 @@
+﻿@model WebApplication1.Models.BasicColor?
+@{
+
+    var values = Enum.GetValues(typeof(WebApplication1.Models.BasicColor)).Cast<object>()
+                     .Select(v => new SelectListItem
+                     {
+                         Selected = v.Equals(Model),
+                         Text = v.ToString(),
+                         Value = v.ToString()
+                     });
+}
+
+@Html.DropDownList("", values, "Please Choose", new { data_ng_model = Html.NameForModel() })

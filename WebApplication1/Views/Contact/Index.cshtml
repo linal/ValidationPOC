@@ -1,0 +1,70 @@
+﻿@model WebApplication1.Models.Contact
+
+@{
+    ViewBag.Title = "Contact Form";
+}
+
+<h2>Contact Form</h2>
+<div ng-app="ContactFormApp">
+    @using (Html.BeginForm())
+    {
+        <div class="row">
+            <div class="col-md-12 errorColumn">
+                <p>
+                    Fields marked with an asterisk <span class="red">*</span> are required.
+                </p>
+                @Html.ValidationSummary()
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.Name)
+            @Html.EditorFor(x => x.Name)
+            @Html.ValidationMessageFor(x => x.Name)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.AnswerMoreQuestions)
+            @Html.EditorFor(x => x.AnswerMoreQuestions)
+            @Html.ValidationMessageFor(x => x.AnswerMoreQuestions)
+            "<span>{{ form.AnswerMoreQuestions }}</span>"
+        </div>
+
+        <div class="form-group" ng-show="AnswerMoreQuestions">
+            @Html.LabelFor(x => x.SeeMoreQuestions)
+            @Html.CheckBoxFor(x => x.SeeMoreQuestions)
+            @Html.ValidationMessageFor(x => x.SeeMoreQuestions)
+        </div>
+
+        <div class="form-group" ng-show="AnswerMoreQuestions && SeeMoreQuestions">
+            @Html.LabelFor(x => x.Velocity)
+            @Html.EditorFor(x => x.Velocity)
+            @Html.ValidationMessageFor(x => x.Velocity)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.Color)
+            @Html.EditorFor(x => x.Color)
+            @Html.ValidationMessageFor(x => x.Color)
+        </div>
+
+        <div class="form-group" ng-show="Color == 'Green'">
+            @Html.LabelFor(x => x.TypeOfGreen)
+            @Html.EditorFor(x => x.TypeOfGreen)
+            @Html.ValidationMessageFor(x => x.TypeOfGreen)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.UltimateQuestion)
+            @Html.EditorFor(x => x.UltimateQuestion)
+            @Html.ValidationMessageFor(x => x.UltimateQuestion)
+        </div>
+
+        <div>
+            <input type="submit" value="Submit"/>
+        </div>
+    }
+</div>
+
+<hr/>
+@Html.DisplayForModel()

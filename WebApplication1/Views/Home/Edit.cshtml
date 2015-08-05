@@ -1,16 +1,17 @@
 ﻿@using Newtonsoft.Json
 @model ValidationPoc.Dto.Questionnaire
 @{
-    ViewBag.Title = "Questionnaire";
+    ViewBag.Title = "Edit Questionnaire";
 }
 
 <div ng-app="QuestionnaireApp" class="container-fluid">
-    
+
     <h2>Questionnaire</h2>
     <form name="form" ng-controller="QuestionnaireController"
-          action="@Url.Action("Index", "Home")" ng-submit="(submitted=true) && form.$invalid && $event.preventDefault();"
+          action="@Url.Action("Edit", "Home")" ng-submit="(submitted=true) && form.$invalid && $event.preventDefault();"
           method="post" novalidate="novalidate" autocomplete="off"
-          ng-cloak><!-- ng-cloak prevents elements being displayed before data is loaded -->
+          ng-cloak>
+        <!-- ng-cloak prevents elements being displayed before data is loaded -->
         @Html.ValidationSummary()
 
         @Html.Partial("Form")

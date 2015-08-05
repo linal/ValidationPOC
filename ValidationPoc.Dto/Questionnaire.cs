@@ -1,7 +1,9 @@
-﻿using FluentValidation.Attributes;
-using ValidationPoc.Models.Validators;
+﻿using System.Collections.Generic;
+using FluentValidation.Attributes;
+using ValidationPoc.Dto.Validators;
+using ValidationPoc.Enums;
 
-namespace ValidationPoc.Models
+namespace ValidationPoc.Dto
 {
     [Validator(typeof(QuestionnaireValidator))]
     public class Questionnaire
@@ -19,5 +21,7 @@ namespace ValidationPoc.Models
         public OtherGreens? TypeOfGreen { get; set; }
 
         public string UltimateQuestion { get; set; }
+
+        public IList<PreviousName> PreviousNames { get; set; }
     }
 }

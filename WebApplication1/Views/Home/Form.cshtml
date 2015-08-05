@@ -1,0 +1,84 @@
+﻿<div class="form-group">
+    <label for="Name">What is your Name? <span class="error">*</span></label>
+    <input id="Name" name="Name" ng-model="data.Name" type="text" ng-required="true" class="form-control">
+    <div class="error" ng-show="(form.Name.$touched || submitted) && form.Name.$invalid">
+        <div ng-show="form.Name.$error.required">Name is required.</div>
+        <div ng-show="form.Name.$error.maxlength">Name is longer than 10 characters longer.</div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="AnswerMoreQuestions">Do you want to answer more questions?</label>
+    <input type="checkbox" id="AnswerMoreQuestions" name="AnswerMoreQuestions" ng-model="data.AnswerMoreQuestions" ng-true-value="true" ng-false-value="false" value="true" />
+</div>
+
+<div class="form-group" ng-show="data.AnswerMoreQuestions">
+    <label for="SeeMoreQuestions">Do you want to see more questions?</label>
+    <input id="SeeMoreQuestions" name="SeeMoreQuestions" type="checkbox" value="true" ng-model="data.SeeMoreQuestions" />
+</div>
+
+<div class="form-group" ng-show="data.AnswerMoreQuestions && data.SeeMoreQuestions">
+    <label for="Velocity">
+        What is the velocity of an unladen swallow?
+        <span class="error" ng-show="data.AnswerMoreQuestions && data.SeeMoreQuestions">*</span>
+    </label>
+    <input id="Velocity" name="Velocity" ng-model="data.Velocity" type="number" ng-required="data.AnswerMoreQuestions && data.SeeMoreQuestions" class="form-control" />
+    <div class="error" ng-show="(form.Velocity.$touched || submitted) && form.Velocity.$invalid">
+        <div ng-show="form.Velocity.$error.required">Velocity is required.</div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="Color">What is your favourite colour?<span class="error">*</span></label>
+    <select data-ng-model="data.Color" name="Color" id="Color" ng-required="true" class="form-control">
+        <option value="">Please Choose</option>
+        <option value="Red">Red</option>
+        <option value="Blue">Blue</option>
+        <option value="Green">Green</option>
+        <option value="Yellow">Yellow</option>
+    </select>
+    <div class="error" ng-show="(form.Color.$touched || submitted) && form.Color.$invalid">
+        <div ng-show="form.Color.$error.required">Color is required.</div>
+    </div>
+</div>
+
+<div class="form-group" ng-show="data.Color == 'Green'">
+    <label for="TypeOfGreen">What type of green is it?<span class="error">*</span></label>
+    <select data-ng-model="data.TypeOfGreen" name="TypeOfGreen" id="TypeOfGreen" ng-required="data.Color == 'Green'" class="form-control">
+        <option value="">Please Choose</option>
+        <option value="LightGreen">Light Green</option>
+        <option value="DarkGreen">Dark Green</option>
+    </select>
+    <div class="error" ng-show="(form.TypeOfGreen.$touched || submitted) && form.TypeOfGreen.$invalid">
+        <div ng-show="form.TypeOfGreen.$error.required">Type of green is required.</div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="UltimateQuestion">
+        What is the ultimate question?
+        <span class="error" ng-show="data.TypeOfGreen=='DarkGreen' && data.Velocity > 41">*</span>
+    </label>
+    <input id="UltimateQuestion" name="UltimateQuestion" ng-model="data.UltimateQuestion" type="text" ng-required="data.TypeOfGreen=='DarkGreen' && data.Velocity > 41" class="form-control" />
+    <div class="error" ng-show="(form.UltimateQuestion.$touched || submitted) && form.UltimateQuestion.$invalid">
+        <div ng-show="form.UltimateQuestion.$error.required">Ultimate Question is required.</div>
+    </div>
+</div>
+
+
+<h3>Previous Names</h3>
+<input type="button" class="btn" value="Add Previous Name" ng-click="AddPreviousName()" />
+<div ng-repeat="item in data.PreviousNames track by $index">
+    <ng-form name="previousNameForm">
+        <div class="form-group">
+            <label>Previous Name</label>
+            <input type="text" name="PreviousNames[{{$index}}].FirstName" ng-name="" ng-model="data.PreviousNames[$index].FirstName" placeholder="First Name" ng-required="true" />
+            <input type="text" name="PreviousNames[{{$index}}].Surname" ng-name="" ng-model="data.PreviousNames[$index].Surname" placeholder="Surname" ng-required="true"/>
+            <input type="button" class="btn" ng-click="removePreviousName($index)" value="Remove Previous Name"/>
+            <div ng-show="submitted">
+                <div class="error" ng-show="previousNameForm['PreviousNames[{{$index}}].FirstName'].$error.required">First Name is required</div>
+                <div class="error" ng-show="previousNameForm['PreviousNames[{{$index}}].Surname'].$error.required">Surname is required</div>
+            </div>
+        </div>
+    </ng-form>
+</div>

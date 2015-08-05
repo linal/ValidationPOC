@@ -1,4 +1,4 @@
-﻿namespace ValidationPoc.Models
+﻿namespace ValidationPoc.Enums
 {
     public enum OtherGreens
     {

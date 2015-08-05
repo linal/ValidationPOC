@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
+using ValidationPoc.Dto.Enums;
 
-namespace ValidationPoc.Models.Validators
+namespace ValidationPoc.Dto.Validators
 {
     public class QuestionnaireValidator : AbstractValidator<Questionnaire>
     {

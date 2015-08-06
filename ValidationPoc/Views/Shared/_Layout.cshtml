@@ -9,10 +9,10 @@
     <link href="~/Content/animate.css" rel="stylesheet" />
 </head>
 <body>
-    <div>
+    <div class="container">
         @if (TempData["Message"] != null)
         {
-            <div class="success">
+            <div class="alert alert-success" role="alert">
                 @TempData["Message"]
             </div>
         }

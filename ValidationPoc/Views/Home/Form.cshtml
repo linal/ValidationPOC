@@ -67,18 +67,25 @@
 
 
 <h3>Previous Names</h3>
-<input type="button" class="btn" value="Add Previous Name" ng-click="AddPreviousName()" />
-<div ng-repeat="item in data.PreviousNames track by $index">
+<input type="button" class="btn" value="Add Previous Name" ng-click="AddPreviousName()" ng-disabled="data.PreviousNames.length >= 5"/>
+
+<div ng-repeat="item in data.PreviousNames track by $index" class="container">
     <ng-form name="previousNameForm">
-        <div class="form-group">
-            <label>Previous Name</label>
-            <input type="text" name="PreviousNames[{{$index}}].FirstName" ng-name="" ng-model="data.PreviousNames[$index].FirstName" placeholder="First Name" ng-required="true" />
-            <input type="text" name="PreviousNames[{{$index}}].Surname" ng-name="" ng-model="data.PreviousNames[$index].Surname" placeholder="Surname" ng-required="true"/>
-            <input type="button" class="btn" ng-click="removePreviousName($index)" value="Remove Previous Name"/>
-            <div>
-                <div class="error" ng-show="(previousNameForm['PreviousNames[{{$index}}].FirstName'].$touched || submitted) && previousNameForm['PreviousNames[{{$index}}].FirstName'].$error.required">First Name is required</div>
-                <div class="error" ng-show="(previousNameForm['PreviousNames[{{$index}}].Surname'].$touched || submitted) && previousNameForm['PreviousNames[{{$index}}].Surname'].$error.required">Surname is required</div>
+        <div class="form-inline">
+            <div class="form-group">
+                <label >First Name</label>
+                <input type="text" class="form-control" name="PreviousNames[{{$index}}].FirstName" ng-model="data.PreviousNames[$index].FirstName" placeholder="First Name" ng-required="true"/>
+                </div>
+            <div class="form-group">
+                <label>Surname</label>
+                <input type="text" class="form-control" name="PreviousNames[{{$index}}].Surname" ng-model="data.PreviousNames[$index].Surname" placeholder="Surname" ng-required="true"/>
             </div>
+                    <input type="button" class="btn" ng-click="removePreviousName($index)" value="Remove Previous Name" />
+                    <div>
+                        <div class="error" ng-show="(previousNameForm['PreviousNames[{{$index}}].FirstName'].$touched || submitted) && previousNameForm['PreviousNames[{{$index}}].FirstName'].$error.required">First Name is required</div>
+                        <div class="error" ng-show="(previousNameForm['PreviousNames[{{$index}}].Surname'].$touched || submitted) && previousNameForm['PreviousNames[{{$index}}].Surname'].$error.required">Surname is required</div>
+                    </div>
+                </div>
         </div>
     </ng-form>
 </div>

@@ -1,9 +1,12 @@
 ﻿(function (angular) {
     'use strict';
 
-    var questionnaireApp = angular.module("QuestionnaireApp", []);
+    var questionnaireApp = angular.module("QuestionnaireApp", ['ngAnimate']);
 
     questionnaireApp.controller('QuestionnaireController', ['$scope', function ($scope) {
+
+        $scope.animate = true;
+
         var jsonText = angular.element(document.querySelector('#data')).val();
         if (jsonText != undefined && jsonText !== 'undefined') {
             $scope.data = JSON.parse(jsonText);

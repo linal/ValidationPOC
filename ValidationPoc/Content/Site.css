@@ -1,0 +1,15 @@
+﻿.error {
+    color: red;
+}
+
+[ng-cloak] {
+    display: none !important;
+}
+
+.ng-enter, .ng-hide-remove {
+  animation: slideInLeft 0.5s;
+}
+
+.ng-leave, .ng-hide {
+  animation: slideOutLeft 0.5s;
+}

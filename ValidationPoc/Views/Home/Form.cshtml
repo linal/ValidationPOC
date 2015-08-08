@@ -74,11 +74,11 @@
         <div class="form-inline">
             <div class="form-group">
                 <label >First Name</label>
-                <input type="text" class="form-control" name="PreviousNames[{{$index}}].FirstName" ng-model="data.previousNames[$index].FirstName" placeholder="First Name" ng-required="true"/>
+                <input type="text" class="form-control" name="PreviousNames[{{$index}}].FirstName" ng-model="data.previousNames[$index].firstName" placeholder="First Name" ng-required="true"/>
                 </div>
             <div class="form-group">
                 <label>Surname</label>
-                <input type="text" class="form-control" name="PreviousNames[{{$index}}].Surname" ng-model="data.previousNames[$index].Surname" placeholder="Surname" ng-required="true"/>
+                <input type="text" class="form-control" name="PreviousNames[{{$index}}].Surname" ng-model="data.previousNames[$index].surname" placeholder="Surname" ng-required="true"/>
             </div>
                     <input type="button" class="btn" ng-click="removePreviousName($index)" value="Remove Previous Name" />
                     <div>

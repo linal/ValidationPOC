@@ -4,6 +4,7 @@ using AutoMapper;
 using FluentValidation.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Serialization;
 using SimpleInjector;
 using SimpleInjector.Extensions;
 using SimpleInjector.Integration.Web.Mvc;
@@ -31,7 +32,13 @@ namespace ValidationPoc
 
             JsonConvert.DefaultSettings = (() =>
             {
-                var settings = new JsonSerializerSettings();
+                var settings = new JsonSerializerSettings
+                {
+                    NullValueHandling = NullValueHandling.Ignore,
+                    ContractResolver = new CamelCasePropertyNamesContractResolver(),
+                    Formatting = Formatting.None
+                };
+
                 settings.Converters.Add(new StringEnumConverter());
                 return settings;
             });

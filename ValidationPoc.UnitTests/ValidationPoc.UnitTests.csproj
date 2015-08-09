@@ -40,11 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Controllers\JasmineController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="scripts\App\QuestionnaireAppTests.ts" />
+    <TypeScriptCompile Include="scripts\tsUnit\tsUnit.ts" />
     <TypeScriptCompile Include="scripts\typings\angularjs\angular-animate.d.ts" />
     <TypeScriptCompile Include="scripts\typings\angularjs\angular-cookies.d.ts" />
     <TypeScriptCompile Include="scripts\typings\angularjs\angular-mocks.d.ts" />
@@ -62,7 +63,7 @@
   <ItemGroup>
     <Content Include="Content\jasmine\jasmine.css" />
     <Content Include="Content\jasmine\jasmine_favicon.png" />
-    <Content Include="scripts\App\QuestionnaireAppTests.js" />
+    <Content Include="scripts\App\_QuestionnaireAppTests.js" />
     <Content Include="scripts\jasmine-samples\Player.js" />
     <Content Include="scripts\jasmine-samples\PlayerSpec.js" />
     <Content Include="scripts\jasmine-samples\Song.js" />

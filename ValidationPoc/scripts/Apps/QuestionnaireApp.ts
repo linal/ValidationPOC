@@ -1,5 +1,5 @@
 ﻿module QuestionnaireApp {
-
+    "use strict";
     export interface IControllerScope extends ng.IScope
     {
         data: QuestionnaireModel;
@@ -37,24 +37,15 @@
     }
 
     export class QuestionnaireController {
+
         private scope: IControllerScope;
-        constructor($scope: IControllerScope) {
+        constructor(private $scope: IControllerScope) {
             this.scope = $scope;
 
-            var jsonText = angular.element(document.querySelector('#data')).val();
-            if (jsonText != undefined && jsonText !== 'undefined') {
-                this.scope.data = JSON.parse(jsonText);
-            }
+            this.scope.data = this.getQuestionnaireModel();
 
-            if (this.scope.data == null) {
-                this.scope.data = new QuestionnaireModel();
-            }
-
-            this.scope.$watch("data.answerMoreQuestions", () => {
-                if ($scope.data != null && !$scope.data.answerMoreQuestions) {
-                    $scope.data.seeMoreQuestions = false;
-                    $scope.data.velocity = null;
-                }
+            this.scope.$watch(() => $scope.data.answerMoreQuestions, () => {
+                this.resetSeeMoreQuestions();
             });
 
             this.scope.addPreviousName = () => {
@@ -64,6 +55,29 @@
             this.scope.removePreviousName = (index: number) => {
                 this.scope.data.previousNames.splice(index, 1);
             };
+        }
+
+        private getQuestionnaireModel(): QuestionnaireModel {
+            var jsonText = angular.element(document.querySelector('#data')).val();
+
+            var model : QuestionnaireModel = null;
+
+            if (jsonText != undefined && jsonText !== 'undefined') {
+                model = JSON.parse(jsonText);
+            }
+
+            if (model == null) {
+                return new QuestionnaireModel();
+            }
+
+            return model;
+        }
+
+        private resetSeeMoreQuestions() {
+            if (this.scope.data != null && !this.scope.data.answerMoreQuestions) {
+                this.scope.data.seeMoreQuestions = false;
+                this.scope.data.velocity = null;
+            }
         }
     }
 

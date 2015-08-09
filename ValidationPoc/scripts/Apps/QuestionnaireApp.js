@@ -1,5 +1,6 @@
 var QuestionnaireApp;
 (function (QuestionnaireApp) {
+    "use strict";
     var BasicColor;
     (function (BasicColor) {
         BasicColor[BasicColor["Red"] = 0] = "Red";
@@ -27,19 +28,11 @@ var QuestionnaireApp;
     var QuestionnaireController = (function () {
         function QuestionnaireController($scope) {
             var _this = this;
+            this.$scope = $scope;
             this.scope = $scope;
-            var jsonText = angular.element(document.querySelector('#data')).val();
-            if (jsonText != undefined && jsonText !== 'undefined') {
-                this.scope.data = JSON.parse(jsonText);
-            }
-            if (this.scope.data == null) {
-                this.scope.data = new QuestionnaireModel();
-            }
-            this.scope.$watch("data.answerMoreQuestions", function () {
-                if ($scope.data != null && !$scope.data.answerMoreQuestions) {
-                    $scope.data.seeMoreQuestions = false;
-                    $scope.data.velocity = null;
-                }
+            this.scope.data = this.getQuestionnaireModel();
+            this.scope.$watch(function () { return $scope.data.answerMoreQuestions; }, function () {
+                _this.resetSeeMoreQuestions();
             });
             this.scope.addPreviousName = function () {
                 _this.scope.data.previousNames.push(new PreviousName());
@@ -48,10 +41,26 @@ var QuestionnaireApp;
                 _this.scope.data.previousNames.splice(index, 1);
             };
         }
+        QuestionnaireController.prototype.getQuestionnaireModel = function () {
+            var jsonText = angular.element(document.querySelector('#data')).val();
+            var model = null;
+            if (jsonText != undefined && jsonText !== 'undefined') {
+                model = JSON.parse(jsonText);
+            }
+            if (model == null) {
+                return new QuestionnaireModel();
+            }
+            return model;
+        };
+        QuestionnaireController.prototype.resetSeeMoreQuestions = function () {
+            if (this.scope.data != null && !this.scope.data.answerMoreQuestions) {
+                this.scope.data.seeMoreQuestions = false;
+                this.scope.data.velocity = null;
+            }
+        };
         return QuestionnaireController;
     })();
     QuestionnaireApp.QuestionnaireController = QuestionnaireController;
     angular.module('QuestionnaireApp', ['ngAnimate'])
         .controller("QuestionnaireController", QuestionnaireController);
 })(QuestionnaireApp || (QuestionnaireApp = {}));
-//# sourceMappingURL=QuestionnaireApp.js.map

@@ -190,20 +190,6 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ValidationPoc.Command\ValidationPoc.Command.csproj">
-      <Project>{0DB3CCD5-BA00-429C-8323-C2BC6E8C6748}</Project>
-      <Name>ValidationPoc.Command</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ValidationPoc.Dto\ValidationPoc.Dto.csproj">
-      <Project>{5B232FBD-24CE-4453-80B5-4F2930966C88}</Project>
-      <Name>ValidationPoc.Dto</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ValidationPoc.Query\ValidationPoc.Query.csproj">
-      <Project>{7CC11864-8503-4319-B349-44F9DEFA0FC9}</Project>
-      <Name>ValidationPoc.Query</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <TypeScriptCompile Include="scripts\Apps\QuestionnaireApp.ts" />
     <TypeScriptCompile Include="scripts\typings\angularjs\angular-animate.d.ts" />
     <TypeScriptCompile Include="scripts\typings\angularjs\angular-cookies.d.ts" />
@@ -216,6 +202,20 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ValidationPoc.Command\ValidationPoc.Command.csproj">
+      <Project>{0db3ccd5-ba00-429c-8323-c2bc6e8c6748}</Project>
+      <Name>ValidationPoc.Command</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ValidationPoc.Dto\ValidationPoc.Dto.csproj">
+      <Project>{5b232fbd-24ce-4453-80b5-4f2930966c88}</Project>
+      <Name>ValidationPoc.Dto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ValidationPoc.Query\ValidationPoc.Query.csproj">
+      <Project>{7cc11864-8503-4319-b349-44f9defa0fc9}</Project>
+      <Name>ValidationPoc.Query</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{73312249-23BD-4BFB-AAF4-63A1C903A5FA}</ProjectGuid>
+    <ProjectGuid>{A44F9375-FC87-478C-82D4-60A6B798F0F1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ValidationPoc.Domain</RootNamespace>
-    <AssemblyName>ValidationPoc.Domain</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <RootNamespace>ValidationPoc.UnitTests</RootNamespace>
+    <AssemblyName>ValidationPoc.UnitTests</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -31,7 +31,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,15 +40,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Answers.cs" />
-    <Compile Include="PreviousName.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="Controllers\JasmineController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ValidationPoc.Enums\ValidationPoc.Enums.csproj">
-      <Project>{ba9cd08a-94d7-4b80-90c4-b3a753ae7656}</Project>
-      <Name>ValidationPoc.Enums</Name>
-    </ProjectReference>
+    <TypeScriptCompile Include="scripts\typings\angularjs\angular-animate.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\angularjs\angular-cookies.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\angularjs\angular-mocks.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\angularjs\angular-resource.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\angularjs\angular-route.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\angularjs\angular-sanitize.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\angularjs\angular.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\jasmine\jasmine.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\jquery\jquery.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Views\Jasmine\SpecRunner.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\jasmine\jasmine.css" />
+    <Content Include="Content\jasmine\jasmine_favicon.png" />
+    <Content Include="scripts\App\QuestionnaireAppTests.js" />
+    <Content Include="scripts\jasmine-samples\Player.js" />
+    <Content Include="scripts\jasmine-samples\PlayerSpec.js" />
+    <Content Include="scripts\jasmine-samples\Song.js" />
+    <Content Include="scripts\jasmine-samples\SpecHelper.js" />
+    <Content Include="scripts\jasmine\boot.js" />
+    <Content Include="scripts\jasmine\console.js" />
+    <Content Include="scripts\jasmine\jasmine-html.js" />
+    <Content Include="scripts\jasmine\jasmine.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

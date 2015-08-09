@@ -67,24 +67,23 @@
     <Compile Include="UpdateAnswersCommand.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ValidationPoc.Domain\ValidationPoc.Domain.csproj">
-      <Project>{73312249-23BD-4BFB-AAF4-63A1C903A5FA}</Project>
-      <Name>ValidationPoc.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ValidationPoc.Dto\ValidationPoc.Dto.csproj">
-      <Project>{5B232FBD-24CE-4453-80B5-4F2930966C88}</Project>
-      <Name>ValidationPoc.Dto</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ValidationPoc.EntityFramework\ValidationPoc.EntityFramework.csproj">
-      <Project>{16986FBE-6D0B-4945-AF63-3EB503DD910E}</Project>
-      <Name>ValidationPoc.EntityFramework</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ValidationPoc.Domain\ValidationPoc.Domain.csproj">
+      <Project>{73312249-23bd-4bfb-aaf4-63a1c903a5fa}</Project>
+      <Name>ValidationPoc.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ValidationPoc.Dto\ValidationPoc.Dto.csproj">
+      <Project>{5b232fbd-24ce-4453-80b5-4f2930966c88}</Project>
+      <Name>ValidationPoc.Dto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ValidationPoc.EntityFramework\ValidationPoc.EntityFramework.csproj">
+      <Project>{16986fbe-6d0b-4945-af63-3eb503dd910e}</Project>
+      <Name>ValidationPoc.EntityFramework</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

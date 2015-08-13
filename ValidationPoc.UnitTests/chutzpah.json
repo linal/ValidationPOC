@@ -1,0 +1,18 @@
+﻿{
+    "Compile": {
+        "Extensions": [ ".ts" ],
+        "ExtensionsWithNoOutput": [ ".d.ts" ],
+        "OutDirectory": "../ValidationPoc",
+        "SourceDirectory": "../ValidationPoc",
+        "Mode": "External"
+    },
+    "References": [
+        {
+            "Includes": [ "*/scripts/App/*.ts" ],
+            "Excludes": [ "*/scripts/App/*.d.ts" ]
+        }
+    ],
+    "Tests": [
+        { "Includes": [ "*/scripts/App/*.ts" ], "Excludes": [ "*/scripts/App/*.d.ts" ] }
+    ]
+}

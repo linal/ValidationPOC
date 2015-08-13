@@ -1,22 +1,23 @@
-﻿/// <reference path="../tsunit/tsunit.ts" />
-/// <reference path="../../../ValidationPoc/scripts/Apps/QuestionnaireApp.ts" />
-module QuestionnaireAppTests {
+﻿/// <reference path="../../Scripts/typings/jasmine/jasmine.d.ts"/>
+/// <reference path="../../scripts/typings/angularjs/angular.d.ts" />
+/// <reference path="../../scripts/typings/angularjs/angular-mocks.d.ts" />
+/// <reference path="../../../ValidationPoc/scripts/App/QuestionnaireApp.ts"/>
 
-    export class MockControllerScope implements QuestionnaireApp.IControllerScope {
-        addPreviousName(): void {}
+describe("calculator test", () => {
+    var controller: QuestionnaireApp.QuestionnaireController;
+    var scope: QuestionnaireApp.IControllerScope;
 
-        removePreviousName(number): void {}
+    beforeEach(inject(function($rootScope: ng.IRootScopeService) {
+        scope = <any>$rootScope.$new();
+    }));
+   
 
-        data: QuestionnaireApp.QuestionnaireModel;
-    }
+    it("addPrviousName addes new previous name", () => {
 
-    export class QuestionnaireControllerTests extends tsUnit.TestClass {
-        addPreviousNameAddsNewPreviousName() {
+        controller = new QuestionnaireApp.QuestionnaireController(scope);
 
-            var scope = new MockControllerScope();
-            var controller = new QuestionnaireApp.QuestionnaireController(scope);
-            scope.addPreviousName();
-            this.areIdentical(1, scope.data.previousNames.length);
-        }
-    }
-}
+        scope.addPreviousName();
+
+        expect(scope.data.previousNames.length).toBe(1);
+    });
+});

@@ -11,6 +11,7 @@
     <AssemblyName>ValidationPoc.UnitTests</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TypeScriptToolsVersion>1.5</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -85,13 +86,17 @@
     <TypeScriptCompile Include="scripts\typings\jquery\jquery.d.ts" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="chutzpah.json" />
     <None Include="packages.config" />
+    <None Include="scripts\angular.min.js.map" />
     <None Include="Views\Jasmine\SpecRunner.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\jasmine\jasmine.css" />
     <Content Include="Content\jasmine\jasmine_favicon.png" />
-    <Content Include="scripts\App\_QuestionnaireAppTests.js" />
+    <Content Include="scripts\angular-mocks.js" />
+    <Content Include="scripts\angular.js" />
+    <Content Include="scripts\angular.min.js" />
     <Content Include="scripts\jasmine-samples\Player.js" />
     <Content Include="scripts\jasmine-samples\PlayerSpec.js" />
     <Content Include="scripts\jasmine-samples\Song.js" />
@@ -102,6 +107,7 @@
     <Content Include="scripts\jasmine\jasmine.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

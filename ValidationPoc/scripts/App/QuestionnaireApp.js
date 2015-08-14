@@ -26,24 +26,13 @@ var QuestionnaireApp;
         return PreviousName;
     })();
     QuestionnaireApp.PreviousName = PreviousName;
-    var QuestionnaireController = (function () {
-        function QuestionnaireController($scope) {
-            var _this = this;
-            this.$scope = $scope;
-            this.scope = $scope;
-            this.scope.data = this.getQuestionnaireModel();
-            this.scope.$watch(function () { return $scope.data.answerMoreQuestions; }, function () {
-                _this.resetSeeMoreQuestions();
-            });
-            this.scope.addPreviousName = function () {
-                _this.scope.data.previousNames.push(new PreviousName());
-            };
-            this.scope.removePreviousName = function (index) {
-                _this.scope.data.previousNames.splice(index, 1);
-            };
+    var ModelService = (function () {
+        function ModelService() {
         }
-        QuestionnaireController.prototype.getQuestionnaireModel = function () {
-            var jsonText = angular.element(document.querySelector('#data')).val();
+        ModelService.prototype.getModel = function () {
+            var selector = document.querySelector('#data');
+            var element = angular.element(selector);
+            var jsonText = element.val();
             var model = null;
             if (jsonText != undefined && jsonText !== 'undefined') {
                 model = JSON.parse(jsonText);
@@ -53,7 +42,26 @@ var QuestionnaireApp;
             }
             return model;
         };
+        return ModelService;
+    })();
+    QuestionnaireApp.ModelService = ModelService;
+    var QuestionnaireController = (function () {
+        function QuestionnaireController(scope, modelService) {
+            var _this = this;
+            this.scope = scope;
+            this.scope.data = modelService.getModel();
+            this.scope.$watch(function () { return _this.scope.data.answerMoreQuestions; }, function () {
+                _this.resetSeeMoreQuestions();
+            });
+            this.scope.addPreviousName = function () {
+                _this.scope.data.previousNames.push(new PreviousName());
+            };
+            this.scope.removePreviousName = function (index) {
+                _this.scope.data.previousNames.splice(index, 1);
+            };
+        }
         QuestionnaireController.prototype.resetSeeMoreQuestions = function () {
+            console.log("resetSeeMoreQuestions():called");
             if (this.scope.data != null && !this.scope.data.answerMoreQuestions) {
                 this.scope.data.seeMoreQuestions = false;
                 this.scope.data.velocity = null;
@@ -63,5 +71,6 @@ var QuestionnaireApp;
     })();
     QuestionnaireApp.QuestionnaireController = QuestionnaireController;
     angular.module('QuestionnaireApp', ['ngAnimate'])
-        .controller("QuestionnaireController", QuestionnaireController);
+        .service('ModelService', ModelService)
+        .controller("QuestionnaireController", ['$scope', 'ModelService', QuestionnaireController]);
 })(QuestionnaireApp || (QuestionnaireApp = {}));

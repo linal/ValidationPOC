@@ -40,15 +40,36 @@
         previousName: string;
     }
 
+    export interface IModelService {
+        getModel(): QuestionnaireModel;
+    }
+
+    export class ModelService implements IModelService {
+        getModel(): QuestionnaireModel {
+            var selector = document.querySelector('#data');
+            var element = angular.element(selector);
+            var jsonText = element.val();
+            var model: QuestionnaireModel = null;
+
+            if (jsonText != undefined && jsonText !== 'undefined') {
+                model = JSON.parse(jsonText);
+            }
+
+            if (model == null) {
+                return new QuestionnaireModel();
+            }
+
+            return model;
+        }
+    }
+
     export class QuestionnaireController {
 
-        private scope: IControllerScope;
-        constructor(private $scope: IControllerScope) {
-            this.scope = $scope;
+        constructor(private scope: IControllerScope, modelService : IModelService) {
 
-            this.scope.data = this.getQuestionnaireModel();
+            this.scope.data = modelService.getModel();
 
-            this.scope.$watch(() => $scope.data.answerMoreQuestions, () => {
+            this.scope.$watch(() => this.scope.data.answerMoreQuestions, () => {
                 this.resetSeeMoreQuestions();
             });
 
@@ -61,23 +82,8 @@
             };
         }
 
-        private getQuestionnaireModel(): QuestionnaireModel {
-            var jsonText = angular.element(document.querySelector('#data')).val();
-
-            var model : QuestionnaireModel = null;
-
-            if (jsonText != undefined && jsonText !== 'undefined') {
-                model = JSON.parse(jsonText);
-            }
-
-            if (model == null) {
-                return new QuestionnaireModel();
-            }
-
-            return model;
-        }
-
         private resetSeeMoreQuestions() {
+            console.log("resetSeeMoreQuestions():called");
             if (this.scope.data != null && !this.scope.data.answerMoreQuestions) {
                 this.scope.data.seeMoreQuestions = false;
                 this.scope.data.velocity = null;
@@ -86,5 +92,6 @@
     }
 
     angular.module('QuestionnaireApp', ['ngAnimate'])
-        .controller("QuestionnaireController", QuestionnaireController);
+        .service('ModelService', ModelService)
+        .controller("QuestionnaireController", ['$scope', 'ModelService', QuestionnaireController]);
 }

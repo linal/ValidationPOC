@@ -8,7 +8,7 @@
     },
     "References": [
         {
-            "Includes": [ "*/scripts/App/*.ts" ],
+            "Includes": [  "*/scripts/App/*.ts" ],
             "Excludes": [ "*/scripts/App/*.d.ts" ]
         }
     ],

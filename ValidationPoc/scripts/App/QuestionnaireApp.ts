@@ -29,6 +29,10 @@
         typeOfGreen: OtherGreens;
         ultimateQuestion: string;
         previousNames: PreviousName[];
+
+        constructor() {
+            this.previousNames = new Array<PreviousName>();
+        }
     }
 
     export class PreviousName {

@@ -15,6 +15,7 @@ var QuestionnaireApp;
     })(OtherGreens || (OtherGreens = {}));
     var QuestionnaireModel = (function () {
         function QuestionnaireModel() {
+            this.previousNames = new Array();
         }
         return QuestionnaireModel;
     })();

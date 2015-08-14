@@ -61,7 +61,6 @@ var QuestionnaireApp;
             };
         }
         QuestionnaireController.prototype.resetSeeMoreQuestions = function () {
-            console.log("resetSeeMoreQuestions():called");
             if (this.scope.data != null && !this.scope.data.answerMoreQuestions) {
                 this.scope.data.seeMoreQuestions = false;
                 this.scope.data.velocity = null;

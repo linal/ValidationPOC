@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using AutoMapper;
 using ValidationPoc.Domain;
 using ValidationPoc.Dto;
@@ -18,6 +19,9 @@ namespace ValidationPoc.Command.Handlers
         public async Task<Questionnaire> HandleAsync(CreateAnswersCommand command)
         {
             var answers = Mapper.Map<Answers>(command.Questionnaire);
+
+            answers.DateCompleted = DateTime.Now;
+
             dataContext.Set<Answers>().Add(answers);
             await dataContext.SaveChangesAsync();
 

@@ -6,11 +6,11 @@ using ValidationPoc.Command.Handlers;
 
 namespace ValidationPoc.Services
 {
-    public class CommandHandlerWrapper : ICommandHandlerWrapper
+    public class CommandHandlerDisptcher : ICommandHandlerDisptcher
     {
         private readonly Container container;
 
-        public CommandHandlerWrapper(Container container)
+        public CommandHandlerDisptcher(Container container)
         {
             this.container = container;
         }

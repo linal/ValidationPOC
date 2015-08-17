@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Web.Http;
+using System.Web.Mvc;
 using System.Web.Routing;
 using AutoMapper;
 using FluentValidation.Mvc;
@@ -8,6 +9,7 @@ using Newtonsoft.Json.Serialization;
 using SimpleInjector;
 using SimpleInjector.Extensions;
 using SimpleInjector.Integration.Web.Mvc;
+using SimpleInjector.Integration.WebApi;
 using ValidationPoc.Command.AutomapperProfiles;
 using ValidationPoc.Command.Handlers;
 using ValidationPoc.Query.AutomapperProfiles;
@@ -23,6 +25,7 @@ namespace ValidationPoc
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
             SetupIoc();
@@ -57,16 +60,20 @@ namespace ValidationPoc
         private void SetupIoc()
         {
             container = new Container();
-            container.Register<ICommandHandlerWrapper, CommandHandlerWrapper>();
-            container.Register<IQueryHandlerWrapper, QueryHandlerWrapper>();
+            container.Register<ICommandHandlerDisptcher, CommandHandlerDisptcher>();
+            container.Register<IQueryHandlerDispatcher, QueryHandlerDispatcher>();
 
             container.RegisterManyForOpenGeneric(typeof(IQueryHandlerAsync<,>), typeof(GetQuestionnaireQueryHandler).Assembly);
             container.RegisterManyForOpenGeneric(typeof(ICommandHandlerAsync<,>), typeof(CreateAnswersCommandHandler).Assembly);
 
+            container.RegisterWebApiControllers(GlobalConfiguration.Configuration);
             container.RegisterMvcControllers();
 
+
             container.Verify();
+
             DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
+            GlobalConfiguration.Configuration.DependencyResolver = new SimpleInjectorWebApiDependencyResolver(container);
         }
     }
 }

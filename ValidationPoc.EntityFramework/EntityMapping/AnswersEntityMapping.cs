@@ -17,6 +17,7 @@ namespace ValidationPoc.EntityFramework.EntityMapping
             Property(x => x.TypeOfGreen);
             Property(x => x.UltimateQuestion);
             HasMany(x => x.PreviousNames);
+            Property(x => x.DateCompleted);
         }
     }
 }

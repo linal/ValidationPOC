@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using ValidationPoc.Enums;
 
@@ -25,5 +26,7 @@ namespace ValidationPoc.Domain
         public string UltimateQuestion { get; set; }
 
         public IList<PreviousName> PreviousNames { get; set; }
+
+        public DateTime? DateCompleted { get; set; }
     }
 }

@@ -3,7 +3,7 @@ using ValidationPoc.Query;
 
 namespace ValidationPoc.Services
 {
-    public interface IQueryHandlerWrapper
+    public interface IQueryHandlerDispatcher
     {
         Task<TResult> HandleAsync<TQuery, TResult>(TQuery query) where TQuery : IQuery;
     }

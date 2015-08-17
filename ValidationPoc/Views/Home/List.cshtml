@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Questionnaires";
+}
+@section scripts{
+    <script type="text/javascript" src="~/scripts/App/QuestionnaireListApp.js"></script>
+}
+<div class="container-fluid" ng-app="QuestionnaireListApp">
+    <h2>Questionnaires</h2>
+    <div ng-controller="QuestionnaireListController">
+        <table class="table table-striped" ng-cloak>
+            <thead>
+                <tr>
+                    <th>Date Completed</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in data.items">
+                    <td>
+                        {{ item.dateCompleted }}
+                    </td>
+                    <td>
+                        <a ng-href="/edit/{{item.id}}" class="btn btn-success">Edit</a>
+                        <a class="btn btn-danger" ng-click="removeItem(item)">Remove</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -47,6 +47,8 @@
     <Compile Include="PreviousName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Questionnaire.cs" />
+    <Compile Include="QuestionnaireSummary.cs" />
+    <Compile Include="QuestionnaireSummaryCollection.cs" />
     <Compile Include="Validators\QuestionnaireValidator.cs" />
   </ItemGroup>
   <ItemGroup>

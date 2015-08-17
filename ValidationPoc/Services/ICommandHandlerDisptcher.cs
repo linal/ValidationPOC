@@ -3,7 +3,7 @@ using ValidationPoc.Command;
 
 namespace ValidationPoc.Services
 {
-    public interface ICommandHandlerWrapper
+    public interface ICommandHandlerDisptcher
     {
         Task<TResult> HandleAsync<TCommand, TResult>(TCommand command) where TCommand : ICommand;
     }

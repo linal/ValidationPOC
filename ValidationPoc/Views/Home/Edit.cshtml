@@ -3,7 +3,9 @@
 @{
     ViewBag.Title = "Edit Questionnaire";
 }
-
+@section scripts{
+    <script type="text/javascript" src="~/scripts/App/QuestionnaireApp.js"></script>
+}
 <div ng-app="QuestionnaireApp" class="container-fluid">
 
     <h2>Questionnaire</h2>
@@ -27,6 +29,7 @@
 
         <div>
             <input class="btn btn-success" type="submit" value="Save">
+            <a href="@Url.Action("List")" class="btn btn-default">Back</a>
         </div>
     </form>
 </div>

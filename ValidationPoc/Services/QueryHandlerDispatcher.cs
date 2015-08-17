@@ -6,11 +6,11 @@ using ValidationPoc.Query.Handlers;
 
 namespace ValidationPoc.Services
 {
-    public class QueryHandlerWrapper : IQueryHandlerWrapper
+    public class QueryHandlerDispatcher : IQueryHandlerDispatcher
     {
         private readonly Container container;
 
-        public QueryHandlerWrapper(Container container)
+        public QueryHandlerDispatcher(Container container)
         {
             this.container = container;
         }

@@ -8,6 +8,8 @@ namespace ValidationPoc.Dto
     [Validator(typeof(QuestionnaireValidator))]
     public class Questionnaire
     {
+        public int Id { get; set; }
+
         public string Name { get; set; }
 
         public bool AnswerMoreQuestions { get; set; }

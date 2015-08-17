@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using ValidationPoc.Command;
 using ValidationPoc.Dto;
@@ -29,6 +31,23 @@ namespace ValidationPoc.Controllers
                     Page = page,
                     PageSize = pageSize
                 });
+        }
+
+        [HttpGet]
+        [Route("api/questionnaires/{id:int}")]
+        public async Task<Questionnaire> Get(int id)
+        {
+            var questionnaire = await queryHandlerDispatcher.HandleAsync<GetQuestionnaireQuery, Questionnaire>(new GetQuestionnaireQuery
+            {
+                Id = id
+            });
+
+            if (questionnaire == null)
+            {
+                throw new HttpResponseException(Request.CreateErrorResponse(HttpStatusCode.NotFound, "Not Found"));
+            }
+
+            return questionnaire;
         }
 
         [HttpDelete]

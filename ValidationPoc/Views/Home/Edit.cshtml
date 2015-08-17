@@ -13,6 +13,7 @@
           action="@Url.Action("Edit", "Home")" ng-submit="(submitted=true) && form.$invalid && $event.preventDefault();"
           method="post" novalidate="novalidate" autocomplete="off"
           ng-cloak>
+        <input type="hidden" name="id" id="id" value="@(ViewContext.RouteData.Values["id"])"/>
         <!-- ng-cloak prevents elements being displayed before data is loaded -->
         @Html.ValidationSummary()
 

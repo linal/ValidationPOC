@@ -1,5 +1,6 @@
 ﻿using System.Web.Http;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 
 namespace ValidationPoc
@@ -13,12 +14,16 @@ namespace ValidationPoc
             // Web API routes
             config.MapHttpAttributeRoutes();
 
-            config.Formatters.JsonFormatter.SerializerSettings = new JsonSerializerSettings
+            var jsonSerializerSettings = new JsonSerializerSettings
             {
                 NullValueHandling = NullValueHandling.Ignore,
                 ContractResolver = new CamelCasePropertyNamesContractResolver(),
                 Formatting = Formatting.None
             };
+
+            jsonSerializerSettings.Converters.Add(new StringEnumConverter());
+
+            config.Formatters.JsonFormatter.SerializerSettings = jsonSerializerSettings;
         }
     }
 }
